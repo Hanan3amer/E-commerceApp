@@ -3,6 +3,7 @@ import useQuerycart from '../Hooks/useQuerycart';
 import { deleteCart, getCart, updateCart } from '../Apis/CartApi';
 import Loading from './Loading';
 import useMutationcart from '../Hooks/useMutationcart';
+import BasicModal from './BasicModal';
 
 export default function Cart() {
   let { mutate: deletem, status: x } = useMutationcart(deleteCart);
@@ -82,6 +83,7 @@ export default function Cart() {
           ))}
         </tbody>
       </table>
+      <BasicModal cartId={data?.data?._id}></BasicModal>
     </div>
   );
 }
