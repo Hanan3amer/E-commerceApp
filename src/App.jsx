@@ -15,6 +15,7 @@ import Newpass from './Components/Newpass'
 import Productdetails from './Components/Productdetails'
 import Categories from './Components/Categories'
 import Orders from './Components/Orders'
+import Wishlist from './Components/Whishlist'
 function App() {
   let routes = createBrowserRouter([{
     path:'/',element:<Layout></Layout>,children:[
@@ -25,6 +26,7 @@ function App() {
       {path:'/newpass',element:<Newpass></Newpass>},
       {path:'/register',element:<Register></Register>},
       {path:'/allorders',element:<Orders></Orders>},
+      {path:'/wishlist',element:<Wishlist></Wishlist>},
       {path:'/products',element:<ProtectedRoute><Products></Products></ProtectedRoute>},
       {path:'/productdetails/:id/:categoryId',element:<ProtectedRoute><Productdetails></Productdetails></ProtectedRoute>},
       {path:'/cart',element:<ProtectedRoute><Cart></Cart></ProtectedRoute>},

@@ -4,8 +4,11 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { auth } from '../Context/AuthContext'
 import { getCart } from '../Apis/CartApi';
 import useQuerycart from '../Hooks/useQuerycart';
+import useQueryWishlist from '../Hooks/useQueryWishlist';
+import { getWishlist } from '../Apis/WishlistApi';
 export default function Navbar() {
   let { isError, error, data, isLoading } = useQuerycart('getcart', getCart);
+  let { isError:ise, error:e, data:d, isLoading:isl } = useQueryWishlist('getwishlist', getWishlist);
   let navigate = useNavigate()
   let { setLogin, isLogin } = useContext(auth)
   let [open, setOpen] = useState(false)
@@ -41,6 +44,7 @@ export default function Navbar() {
                 <NavLink to='/' className="rounded-md  px-2 py-2 text-lg font-normal text-gray-500 hover:text-black" aria-current="page">Home</NavLink>
                 <NavLink to='/products' className="rounded-md  px-2 py-2 text-lg font-normal text-gray-500 hover:text-black" >Products</NavLink>
                 <NavLink to='/cart' className="rounded-md px-2 py-2 text-lg font-normal text-gray-500 hover:text-black ">Cart</NavLink>
+                <NavLink to='/wishlist' className="rounded-md px-2 py-2 text-lg font-normal text-gray-500 hover:text-black ">Wishlist</NavLink>
                 <NavLink to='/categories' className="rounded-md px-2 py-2 text-lg font-normal text-gray-500 hover:text-black ">Categories</NavLink>
                 <NavLink to='/brand' className="rounded-md px-2 py-2 text-lg font-normal text-gray-500 hover:text-black ">Brands</NavLink>
               </div>
@@ -52,6 +56,9 @@ export default function Navbar() {
               <>
                 <li className='fas fa-cart-shopping text-green-600'>
                   <span className=' text-black absolute top-[10px]'>{data?.numOfCartItems}</span>
+                </li>
+                <li className='fas fa-heart text-green-600'>
+                  <span className=' text-black absolute top-[10px]'>{d?.count}</span>
                 </li>
                 <li className="list-none text-gray-500"> {isLogin ? <p>Hi <span className="text-green-700">{isLogin.name}</span> </p> : ''}</li>
                 <li onClick={logout} className=" cursor-pointer px-3 text-lg font-normal text-gray-500 list-none ">LogOut  </li>
