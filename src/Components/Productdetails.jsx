@@ -90,7 +90,7 @@ export default function Productdetails() {
       </div>
       <h2 className='text-green-500 text-xl my-5'>Related Products :</h2>
       <div className='row my-5'>
-        {relatedproducts?.map(prod => <Item ele={prod} key={prod._id} />)}
+        {relatedproducts?.map(prod => <Item ele={prod} key={prod._id} changesrc={changesrc}/>)}
       </div>
     </div>
   )

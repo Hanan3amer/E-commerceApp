@@ -6,11 +6,11 @@ import useMutationcart from '../Hooks/useMutationcart'
 import { toast } from 'react-toastify'
 import useMutationWishlist from '../Hooks/useMutationWishlist'
 
-export default function Item({ ele }) {
+export default function Item({ ele, changesrc }) {
     let { mutate, status, data } = useMutationcart(AddtoCart)
     if (status == 'success') {
         toast(data?.data.message)
-       
+
     }
 
     let { mutate: whish, status: wishlistStatus, data: wishlistData } = useMutationWishlist(addToWishlist)
@@ -18,12 +18,11 @@ export default function Item({ ele }) {
         toast(wishlistData?.data?.message);
 
     }
-
     return (
         <div className='md:w-1/6 sm:1/2'>
             <div className="product p-2 cursor-pointer">
                 <Link to={`/productdetails/${ele?._id}/${ele?.category._id}`}>
-                    <img src={ele?.imageCover} className='w-full' />
+                    <img src={ele?.imageCover} className='w-full' onClick={changesrc} />
                     <p className='text-green-700'>{ele?.category?.name}</p>
                     <p className='line-clamp-1'>{ele?.title}</p>
                     <div className='flex justify-between my-3'>
