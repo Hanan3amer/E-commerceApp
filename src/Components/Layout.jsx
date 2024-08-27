@@ -5,11 +5,13 @@ import Footer from './Footer'
 export default function Layout() {
   return (
     <>
-    <Navbar></Navbar>
-    <div className="container">
-    <Outlet></Outlet>
-    </div>
-    {/* <Footer></Footer> */}
+      <div className='d-flex justify-between flex-col gap-14'>
+        <Navbar></Navbar>
+        <div className="container">
+          <Outlet></Outlet>
+        </div>
+        <Footer></Footer>
+      </div>
     </>
   )
 }

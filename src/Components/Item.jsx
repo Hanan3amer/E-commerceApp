@@ -16,13 +16,12 @@ export default function Item({ ele, changesrc }) {
     let { mutate: whish, status: wishlistStatus, data: wishlistData } = useMutationWishlist(addToWishlist)
     if (wishlistStatus == 'success') {
         toast(wishlistData?.data?.message);
-
     }
     return (
         <div className='md:w-1/6 sm:1/2'>
-            <div className="product p-2 cursor-pointer">
+            <div className="product p-2 cursor-pointer" onClick={changesrc}>
                 <Link to={`/productdetails/${ele?._id}/${ele?.category._id}`}>
-                    <img src={ele?.imageCover} className='w-full' onClick={changesrc} />
+                    <img src={ele?.imageCover} className='w-full'/>
                     <p className='text-green-700'>{ele?.category?.name}</p>
                     <p className='line-clamp-1'>{ele?.title}</p>
                     <div className='flex justify-between my-3'>

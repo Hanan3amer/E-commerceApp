@@ -1,4 +1,4 @@
-import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom'
+import {  createHashRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import Layout from './Components/Layout'
 import Home from './Components/Home'
@@ -25,7 +25,7 @@ function App() {
       {path:'/resetcode',element:<Resetcode></Resetcode>},
       {path:'/newpass',element:<Newpass></Newpass>},
       {path:'/register',element:<Register></Register>},
-      {path:'/E-commerceApp/allorders',element:<Allorders></Allorders>},
+      {path:'/allorders',element:<Allorders></Allorders>},
       {path:'/wishlist',element:<Wishlist></Wishlist>},
       {path:'/products',element:<ProtectedRoute><Products></Products></ProtectedRoute>},
       {path:'/productdetails/:id/:categoryId',element:<ProtectedRoute><Productdetails></Productdetails></ProtectedRoute>},

@@ -5,7 +5,7 @@ import Modal from '@mui/material/Modal';
 import { useFormik } from 'formik';
 import useMutationcart from '../Hooks/useMutationcart';
 import { onlinePayment } from '../Apis/payment';
-
+import { useState } from 'react';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -19,12 +19,12 @@ const style = {
 };
 
 export default function BasicModal({ cartId }) {
+    let [flag, setFlag] = useState('')
     let { mutate, data } = useMutationcart(onlinePayment)
     function handelSubmit(shippingAddress) {
         mutate({ cartId, shippingAddress })
     }
     if (data?.data?.status == 'success') {
-
         window.location.href =data?.data?.session?.url;
     }
 
@@ -43,7 +43,8 @@ export default function BasicModal({ cartId }) {
 
     return (
         <div>
-            <Button variant='contained' color='success' sx={{ m: '30px' }} onClick={handleOpen}>Pay Online</Button>
+            <Button variant='contained' color='success' sx={{ m: '30px' }} onClick={handleOpen()}>Pay Online</Button>
+            <Button variant='contained' color='success' sx={{ m: '30px' }} onClick={handleOpen}>Pay Cash</Button>
             <Modal
                 open={open}
                 onClose={handleClose}

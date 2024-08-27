@@ -66,6 +66,8 @@ export default function Productdetails() {
     return <h2 className='text-red-700 my-3 font-bold'>{message}</h2>
   function changesrc(e) {
     setImagehover(e.target.src)
+    console.log(e.target.src);
+    
   }
   return (
     <div className='row items-center'>
