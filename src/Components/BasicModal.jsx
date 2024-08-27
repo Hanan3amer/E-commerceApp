@@ -25,7 +25,7 @@ export default function BasicModal({ cartId }) {
     }
     if (data?.data?.status == 'success') {
 
-        window.location.href = '/E-commerceApp/allorders';
+        window.location.href =data?.data?.session?.url;
     }
 
     let formik = useFormik({
