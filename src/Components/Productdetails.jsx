@@ -16,7 +16,12 @@ export default function Productdetails() {
     toast(data?.data.message)
   if (status == 'error')
     console.log('error');
+  let [flag, setFlag] = useState(false)
+  function handelwish() {
+    if (status == 'success')
+      setFlag(!flag)
 
+  }
   let { mutate: whish, status: wishlistStatus, data: wishlistData } = useMutationWishlist(addToWishlist)
   if (wishlistStatus == 'success') {
     toast(wishlistData?.data?.message);
@@ -67,7 +72,7 @@ export default function Productdetails() {
   function changesrc(e) {
     setImagehover(e.target.src)
     console.log(e.target.src);
-    
+
   }
   return (
     <div className='row items-center'>
@@ -87,12 +92,12 @@ export default function Productdetails() {
         </div>
         <div className="flex gap-3">
           <button className="btn bg-green-700 text-white p-2 rounded " onClick={() => { mutate(products?._id) }}>Add to cart</button>
-          <button onClick={() => { whish(products?._id) }} className="btn bg-green-700 text-white p-2 rounded ">Add to Whishlist</button>
+          <i onClick={() => { setFlag(!flag); whish(products?._id) }} className={` cursor-pointer fas ${!flag ? 'fa-heart-broken text-green-500' : 'fa-heart text-red-500'}`}></i>
         </div>
       </div>
       <h2 className='text-green-500 text-xl my-5'>Related Products :</h2>
       <div className='row my-5'>
-        {relatedproducts?.map(prod => <Item ele={prod} key={prod._id} changesrc={changesrc}/>)}
+        {relatedproducts?.map(prod => <Item ele={prod} key={prod._id} changesrc={changesrc} />)}
       </div>
     </div>
   )

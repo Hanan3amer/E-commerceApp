@@ -46,7 +46,7 @@ export default function Wishlist() {
                 <a onClick={() => {
                   console.log('Remove item', ele?._id);
                   removeItem(ele?._id);
-                }} className="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                }} className="font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer">Remove</a>
               </td>
             </tr>
           ))}

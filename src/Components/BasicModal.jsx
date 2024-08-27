@@ -4,8 +4,9 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { useFormik } from 'formik';
 import useMutationcart from '../Hooks/useMutationcart';
-import { onlinePayment } from '../Apis/payment';
+import { CashPayment, onlinePayment } from '../Apis/payment';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -21,12 +22,21 @@ const style = {
 export default function BasicModal({ cartId }) {
     let [flag, setFlag] = useState('')
     let { mutate, data } = useMutationcart(onlinePayment)
+    let { mutate: cash, data: cashdata } = useMutationcart(CashPayment)
     function handelSubmit(shippingAddress) {
-        mutate({ cartId, shippingAddress })
+        if (flag)
+            mutate({ cartId, shippingAddress })
+        else
+            cash({ cartId, shippingAddress })
     }
     if (data?.data?.status == 'success') {
-        window.location.href =data?.data?.session?.url;
+        window.location.href = data?.data?.session?.url;
     }
+    if (data?.data?.status == 'success') {
+       toast('payment Done')
+    }
+
+
 
     let formik = useFormik({
         initialValues: {
@@ -43,7 +53,7 @@ export default function BasicModal({ cartId }) {
 
     return (
         <div>
-            <Button variant='contained' color='success' sx={{ m: '30px' }} onClick={handleOpen()}>Pay Online</Button>
+            <Button variant='contained' color='success' sx={{ m: '30px' }} onClick={() => { handleOpen(); setFlag(!flag) }}>Pay Online</Button>
             <Button variant='contained' color='success' sx={{ m: '30px' }} onClick={handleOpen}>Pay Cash</Button>
             <Modal
                 open={open}
