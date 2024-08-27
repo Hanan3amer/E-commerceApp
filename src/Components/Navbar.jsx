@@ -47,6 +47,7 @@ export default function Navbar() {
                 <NavLink to='/wishlist' className="rounded-md px-2 py-2 text-lg font-normal text-gray-500 hover:text-black ">Wishlist</NavLink>
                 <NavLink to='/categories' className="rounded-md px-2 py-2 text-lg font-normal text-gray-500 hover:text-black ">Categories</NavLink>
                 <NavLink to='/brand' className="rounded-md px-2 py-2 text-lg font-normal text-gray-500 hover:text-black ">Brands</NavLink>
+                
               </div>
             </div> : ''}
           </div>

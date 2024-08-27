@@ -14,8 +14,8 @@ import Resetcode from './Components/Resetcode'
 import Newpass from './Components/Newpass'
 import Productdetails from './Components/Productdetails'
 import Categories from './Components/Categories'
-import Orders from './Components/Orders'
 import Wishlist from './Components/Whishlist'
+import Allorders from './Components/Allorders'
 function App() {
   let routes = createBrowserRouter([{
     path:'/',element:<Layout></Layout>,children:[
@@ -25,7 +25,7 @@ function App() {
       {path:'/resetcode',element:<Resetcode></Resetcode>},
       {path:'/newpass',element:<Newpass></Newpass>},
       {path:'/register',element:<Register></Register>},
-      {path:'/allorders',element:<Orders></Orders>},
+      {path:'E-commerceApp/allorders',element:<Allorders></Allorders>},
       {path:'/wishlist',element:<Wishlist></Wishlist>},
       {path:'/products',element:<ProtectedRoute><Products></Products></ProtectedRoute>},
       {path:'/productdetails/:id/:categoryId',element:<ProtectedRoute><Productdetails></Productdetails></ProtectedRoute>},
